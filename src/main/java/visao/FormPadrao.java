@@ -1,5 +1,8 @@
 package visao;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -14,6 +17,39 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
     //CONSTRUTOR
     public FormPadrao() {
         initComponents();
+        chamaComponentesPrincipal();
+        setarIcone();
+        
+
+    }
+    
+    private void setarIcone(){
+        Image iconNovo = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\novo.png");
+        ImageIcon iconeNovo = new ImageIcon(iconNovo);
+        jbNovo.setIcon(iconeNovo);
+        
+        Image iconEditar = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\edit.png");
+        ImageIcon iconeEditar = new ImageIcon(iconEditar);
+        jbAlterar.setIcon(iconeEditar);
+        
+        Image iconRemover = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\remove.png");
+        ImageIcon iconeRemover = new ImageIcon(iconRemover);
+        jbExcluir.setIcon(iconeRemover);
+        
+        Image iconSalvar = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\salvar.png");
+        ImageIcon iconeSalvar = new ImageIcon(iconSalvar);
+        jbSalvar.setIcon(iconeSalvar);
+        
+        Image iconCancelar = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\cancel.png");
+        ImageIcon iconeCancelar = new ImageIcon(iconCancelar);
+        jbCancelar.setIcon(iconeCancelar);
+        
+        Image iconFechar = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\Fechar.png");
+        ImageIcon iconeFechar = new ImageIcon(iconFechar);
+        jbFechar.setIcon(iconeFechar);
+    }
+
+    private void chamaComponentesPrincipal(){
         jtfId.setEnabled(false);
         jtfDescricao.setEnabled(false);
         habilitaCampos(false);
@@ -29,9 +65,9 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
         jtfConsulta.setBounds(70, 5, 490, 25);
 
         jpnConsulta.add(jtfConsulta);
-
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -114,11 +150,11 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
                 .addComponent(jbAlterar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbExcluir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addGap(50, 50, 50)
                 .addComponent(jbSalvar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
+                .addComponent(jbCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                 .addComponent(jbFechar)
                 .addContainerGap())
         );
@@ -157,7 +193,6 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
                     .addGroup(jpnFormularioLayout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(38, 38, 38)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpnFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpnFormularioLayout.createSequentialGroup()
                         .addComponent(jLabel2)

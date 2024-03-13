@@ -1,5 +1,8 @@
 package visao;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -8,8 +11,41 @@ public class Principal extends javax.swing.JFrame {
     //Método construtor
     public Principal() {
         initComponents();
-        setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setarIcone();
 
+        
+    }
+
+    private void setarIcone(){
+        //C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\
+        Image iconArquivo = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\arquivo.png");
+        ImageIcon iconeArquivo = new ImageIcon(iconArquivo);
+        jmArquivo.setIcon(iconeArquivo);
+        
+        Image iconSobre = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\me.png");
+        ImageIcon iconeSobre = new ImageIcon(iconSobre);
+        jmSobre.setIcon(iconeSobre);
+    
+        Image iconCadastros = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\novo.png");
+        ImageIcon iconeCadastros = new ImageIcon(iconCadastros);
+        jmCadastros.setIcon(iconeCadastros);
+        
+        Image iconContatos = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\contato.png");
+        ImageIcon iconeContatos = new ImageIcon(iconContatos);
+        jmiContatos.setIcon(iconeContatos);
+        
+        Image iconCidade = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\cidade.png");
+        ImageIcon iconeCidade = new ImageIcon(iconCidade);
+        jmiCidade.setIcon(iconeCidade);
+        
+        Image iconBairro = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\bairro.png");
+        ImageIcon iconeBairro = new ImageIcon(iconBairro);
+        jmiBairro.setIcon(iconeBairro);
+        
+        Image iconTipoContato = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\tipo.png");
+        ImageIcon iconeTipoContato = new ImageIcon(iconTipoContato);
+        jmiTipoContato.setIcon(iconeTipoContato);
     }
     
     @SuppressWarnings("unchecked")
@@ -114,7 +150,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jmiContatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiContatosActionPerformed
         // TODO add your handling code here:
-        
+
         ContatoVisao contatoTela = new ContatoVisao();
         jDesktop.add(contatoTela);
         contatoTela.setVisible(true);
