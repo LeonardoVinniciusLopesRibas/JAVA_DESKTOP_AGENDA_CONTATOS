@@ -1,5 +1,6 @@
 package visao;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public class Principal extends javax.swing.JFrame {
@@ -7,8 +8,8 @@ public class Principal extends javax.swing.JFrame {
     //Método construtor
     public Principal() {
         initComponents();
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
+        setExtendedState(JFrame.MAXIMIZED_BOTH); 
+
     }
     
     @SuppressWarnings("unchecked")
