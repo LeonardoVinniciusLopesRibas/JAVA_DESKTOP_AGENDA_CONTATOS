@@ -25,4 +25,9 @@ public class BairroVisao extends FormPadrao {
         jpnFormulario.add(jcbBairro);
     }
 
+    @Override
+    public void salvarVisao() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

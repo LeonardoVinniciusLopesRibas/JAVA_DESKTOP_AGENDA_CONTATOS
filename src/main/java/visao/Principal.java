@@ -5,9 +5,12 @@ import java.awt.Toolkit;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import util.PosicaoFormulario;
 
 public class Principal extends javax.swing.JFrame {
 
+    PosicaoFormulario form = new PosicaoFormulario();
+    
     //Método construtor
     public Principal() {
         initComponents();
@@ -151,30 +154,40 @@ public class Principal extends javax.swing.JFrame {
     private void jmiContatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiContatosActionPerformed
         // TODO add your handling code here:
 
-        ContatoVisao contatoTela = new ContatoVisao();
-        jDesktop.add(contatoTela);
-        contatoTela.setVisible(true);
+        //ContatoVisao contatoTela = new ContatoVisao();
+        //jDesktop.add(contatoTela);
+        //contatoTela.setVisible(true);
+        ContatoVisao tela;
+        form.abrirFormulario(tela = new ContatoVisao(), jDesktop);
     }//GEN-LAST:event_jmiContatosActionPerformed
 
     private void jmiBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiBairroActionPerformed
         // TODO add your handling code here:
-        BairroVisao bairroTela = new BairroVisao();
-        jDesktop.add(bairroTela);
-        bairroTela.setVisible(true);
+        //BairroVisao bairroTela = new BairroVisao();
+        //jDesktop.add(bairroTela);
+        //bairroTela.setVisible(true);
+        BairroVisao tela;
+        form.abrirFormulario(tela = new BairroVisao(), jDesktop);
     }//GEN-LAST:event_jmiBairroActionPerformed
 
     private void jmiCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCidadeActionPerformed
         // TODO add your handling code here:
-        CidadeVisao cidadeTela = new CidadeVisao();
-        jDesktop.add(cidadeTela);
-        cidadeTela.setVisible(true);
+        //CidadeVisao cidadeTela = new CidadeVisao();
+        //jDesktop.add(cidadeTela);
+        //cidadeTela.setVisible(true);
+        CidadeVisao tela;
+        form.abrirFormulario(tela = new CidadeVisao(), jDesktop);
+        
     }//GEN-LAST:event_jmiCidadeActionPerformed
 
     private void jmiTipoContatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiTipoContatoActionPerformed
         // TODO add your handling code here:
-        TipoContatoVisao contatoVisaoTela = new TipoContatoVisao();
-        jDesktop.add(contatoVisaoTela);
-        contatoVisaoTela.setVisible(true);
+        //TipoContatoVisao contatoVisaoTela = new TipoContatoVisao();
+        //jDesktop.add(contatoVisaoTela);
+        //contatoVisaoTela.setVisible(true);
+        TipoContatoVisao tela;
+        form.abrirFormulario(tela = new TipoContatoVisao(), jDesktop);
+        
     }//GEN-LAST:event_jmiTipoContatoActionPerformed
 
     /**

@@ -35,4 +35,9 @@ public class CidadeVisao extends FormPadrao {
         jpnFormulario.add(jtfCep);
         
     }
+
+    @Override
+    public void salvarVisao() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

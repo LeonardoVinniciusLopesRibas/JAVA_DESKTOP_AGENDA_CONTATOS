@@ -10,6 +10,7 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
 
     //MÉTODOS ABSTRATOS SERÃO IMPLEMENTADOS PELA CLASSE FILHA
     abstract public void inicializarComponentes();
+    abstract public void salvarVisao();
 
     JLabel jlConsulta;
     JTextField jtfConsulta;
@@ -182,6 +183,12 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
             }
         });
 
+        jtfDescricao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfDescricaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpnFormularioLayout = new javax.swing.GroupLayout(jpnFormulario);
         jpnFormulario.setLayout(jpnFormularioLayout);
         jpnFormularioLayout.setHorizontalGroup(
@@ -265,6 +272,7 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
         // TODO add your handling code here:
+        salvarVisao();
         habilitaBotoes(true);
         habilitaCampos(false);
 
@@ -295,6 +303,10 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
     private void jtfIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfIdActionPerformed
+
+    private void jtfDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDescricaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfDescricaoActionPerformed
 
     //METODOS PARA FAZER BOTÕES FICAREM TRUE OR FALSE
     public void habilitaBotoes(boolean estado) {
@@ -327,7 +339,7 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jpnBotoes;
     private javax.swing.JPanel jpnConsulta;
     public javax.swing.JPanel jpnFormulario;
-    private javax.swing.JTextField jtfDescricao;
-    private javax.swing.JTextField jtfId;
+    public javax.swing.JTextField jtfDescricao;
+    public javax.swing.JTextField jtfId;
     // End of variables declaration//GEN-END:variables
 }
