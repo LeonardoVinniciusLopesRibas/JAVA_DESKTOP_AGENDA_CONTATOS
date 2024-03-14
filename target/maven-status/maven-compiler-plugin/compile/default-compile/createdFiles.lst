@@ -19,6 +19,7 @@ visao\FormPadrao$1.class
 visao\CidadeVisao.class
 visao\FormPadrao$2.class
 visao\FormPadrao$4.class
+util\Tabela.class
 controle\TipoContatoControler.class
 visao\TipoContatoVisao.class
 visao\FormPadrao$7.class

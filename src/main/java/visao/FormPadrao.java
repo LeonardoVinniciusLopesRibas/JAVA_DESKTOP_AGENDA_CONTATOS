@@ -4,13 +4,26 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import util.Tabela;
 
 abstract public class FormPadrao extends javax.swing.JInternalFrame {
 
     //MÉTODOS ABSTRATOS SERÃO IMPLEMENTADOS PELA CLASSE FILHA
     abstract public void inicializarComponentes();
     abstract public void salvarVisao();
+    abstract public void criarTabela();
+    abstract public void consultaVisao();
+    
+    
+    //Atributos para criar tabela
+    JTable tabela;
+    DefaultTableModel modelo = new DefaultTableModel();
+    
+    //instanciando objeto para manipular a classe tabela
+    Tabela utilTabela = new Tabela();
 
     JLabel jlConsulta;
     JTextField jtfConsulta;
@@ -18,9 +31,25 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
     //CONSTRUTOR
     public FormPadrao() {
         initComponents();
-        chamaComponentesPrincipal();
         setarIcone();
+        criarTabela();
+        //chamaComponentesPrincipal();
         
+        jtfId.setEnabled(false);
+        jtfDescricao.setEnabled(false);
+        habilitaCampos(false);
+        inicializarComponentes();
+
+        //JLABEL PARA CONSULTA
+        jlConsulta = new JLabel("Consulta");
+        jlConsulta.setBounds(9, 5, 60, 25);
+        jpnConsulta.add(jlConsulta);
+
+        //JTEXTFIELD PARA CONSULTA
+        jtfConsulta = new JTextField();
+        jtfConsulta.setBounds(70, 5, 490, 25);
+
+        jpnConsulta.add(jtfConsulta);
 
     }
     
@@ -50,7 +79,7 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
         jbFechar.setIcon(iconeFechar);
     }
 
-    private void chamaComponentesPrincipal(){
+    /*private void chamaComponentesPrincipal(){
         jtfId.setEnabled(false);
         jtfDescricao.setEnabled(false);
         habilitaCampos(false);
@@ -66,7 +95,7 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
         jtfConsulta.setBounds(70, 5, 490, 25);
 
         jpnConsulta.add(jtfConsulta);
-    }
+    }*/
     
     
     /**
@@ -227,7 +256,7 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
         jpnConsulta.setLayout(jpnConsultaLayout);
         jpnConsultaLayout.setHorizontalGroup(
             jpnConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 729, Short.MAX_VALUE)
         );
         jpnConsultaLayout.setVerticalGroup(
             jpnConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,7 +366,7 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbNovo;
     private javax.swing.JButton jbSalvar;
     private javax.swing.JPanel jpnBotoes;
-    private javax.swing.JPanel jpnConsulta;
+    public javax.swing.JPanel jpnConsulta;
     public javax.swing.JPanel jpnFormulario;
     public javax.swing.JTextField jtfDescricao;
     public javax.swing.JTextField jtfId;

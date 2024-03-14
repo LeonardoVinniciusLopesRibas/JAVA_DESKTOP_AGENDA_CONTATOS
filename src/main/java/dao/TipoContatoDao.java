@@ -6,9 +6,11 @@ package dao;
 
 import interfaces.InterfaceDao;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.TipoContatoModelo;
 
 /**
@@ -19,6 +21,7 @@ public class TipoContatoDao implements InterfaceDao {
 
     String sql;
     PreparedStatement pstmt = null;
+    ResultSet rs;
 
     @Override
     public void salvarDao(Object... valor) {
@@ -54,6 +57,24 @@ public class TipoContatoDao implements InterfaceDao {
 
     @Override
     public void consultaDao(Object... valor) throws SQLException {
+        
+        DefaultTableModel tabela = (DefaultTableModel) valor[1];
+        
+        sql = "SELECT * FROM tipocontato";
+        pstmt = ConexaoBanco.abreConnection().prepareStatement(sql);
+        rs = pstmt.executeQuery();
+        
+        while(rs.next()){
+            tabela.addRow(
+            
+                    new Object[] {
+                        rs.getInt("id"),
+                        rs.getString("descricao")
+                    }
+            
+            );
+        }
+        pstmt.close();
     }
 
     @Override
