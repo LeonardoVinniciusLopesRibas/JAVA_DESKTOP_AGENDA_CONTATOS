@@ -10,47 +10,46 @@ import util.PosicaoFormulario;
 public class Principal extends javax.swing.JFrame {
 
     PosicaoFormulario form = new PosicaoFormulario();
-    
+
     //Método construtor
     public Principal() {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setarIcone();
 
-        
     }
 
-    private void setarIcone(){
+    private void setarIcone() {
         //C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\
         Image iconArquivo = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\arquivo.png");
         ImageIcon iconeArquivo = new ImageIcon(iconArquivo);
         jmArquivo.setIcon(iconeArquivo);
-        
+
         Image iconSobre = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\me.png");
         ImageIcon iconeSobre = new ImageIcon(iconSobre);
         jmSobre.setIcon(iconeSobre);
-    
+
         Image iconCadastros = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\novo.png");
         ImageIcon iconeCadastros = new ImageIcon(iconCadastros);
         jmCadastros.setIcon(iconeCadastros);
-        
+
         Image iconContatos = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\contato.png");
         ImageIcon iconeContatos = new ImageIcon(iconContatos);
         jmiContatos.setIcon(iconeContatos);
-        
+
         Image iconCidade = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\cidade.png");
         ImageIcon iconeCidade = new ImageIcon(iconCidade);
         jmiCidade.setIcon(iconeCidade);
-        
+
         Image iconBairro = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\bairro.png");
         ImageIcon iconeBairro = new ImageIcon(iconBairro);
         jmiBairro.setIcon(iconeBairro);
-        
+
         Image iconTipoContato = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\tipo.png");
         ImageIcon iconeTipoContato = new ImageIcon(iconTipoContato);
         jmiTipoContato.setIcon(iconeTipoContato);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -177,7 +176,7 @@ public class Principal extends javax.swing.JFrame {
         //cidadeTela.setVisible(true);
         CidadeVisao tela;
         form.abrirFormulario(tela = new CidadeVisao(), jDesktop);
-        
+
     }//GEN-LAST:event_jmiCidadeActionPerformed
 
     private void jmiTipoContatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiTipoContatoActionPerformed
@@ -187,7 +186,7 @@ public class Principal extends javax.swing.JFrame {
         //contatoVisaoTela.setVisible(true);
         TipoContatoVisao tela;
         form.abrirFormulario(tela = new TipoContatoVisao(), jDesktop);
-        
+
     }//GEN-LAST:event_jmiTipoContatoActionPerformed
 
     /**

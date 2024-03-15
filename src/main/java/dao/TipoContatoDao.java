@@ -39,10 +39,10 @@ public class TipoContatoDao implements InterfaceDao {
             //PREPARANDO CONEXÃO E MANIPULANDO DADOS
             pstmt = ConexaoBanco.abreConnection().prepareStatement(sql);
             pstmt.setString(1, tcm.getDescricao());
-            if(tcm.getId() > 0){
+            if (tcm.getId() > 0) {
                 pstmt.setInt(2, tcm.getId());
             }
-            
+
             pstmt.execute();
             pstmt.close();
             JOptionPane.showMessageDialog(null, "REGISTRO GRAVADO");
@@ -57,23 +57,18 @@ public class TipoContatoDao implements InterfaceDao {
 
     @Override
     public void consultaDao(Object... valor) throws SQLException {
-        
         DefaultTableModel tabela = (DefaultTableModel) valor[1];
-        
         sql = "SELECT * FROM tipocontato";
+        System.out.println("Executando consulta: " + sql); // Log de diagnóstico
         pstmt = ConexaoBanco.abreConnection().prepareStatement(sql);
         rs = pstmt.executeQuery();
-        
-        while(rs.next()){
-            tabela.addRow(
-            
-                    new Object[] {
-                        rs.getInt("id"),
-                        rs.getString("descricao")
-                    }
-            
-            );
+        int count = 0; // Contador para verificar a quantidade de registros
+
+        while (rs.next()) {
+            count++;
+            tabela.addRow(new Object[]{rs.getInt("id"), rs.getString("descricao")});
         }
+        System.out.println("Registros encontrados: " + count); // Log de diagnóstico
         pstmt.close();
     }
 

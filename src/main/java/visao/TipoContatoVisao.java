@@ -4,20 +4,18 @@ import controle.TipoContatoControler;
 import javax.swing.table.DefaultTableModel;
 
 public class TipoContatoVisao extends FormPadrao {
-    
+
     public TipoContatoVisao() {
     }
 
     @Override
     public void inicializarComponentes() {
         setTitle("Cadastro de Tipo de Contato");
-        
-                
-        
+        tcc = new TipoContatoControler();
         consultaVisao();
-        
+
     }
-    
+
     //INSTANCIANDO CONTROLLER
     TipoContatoControler tcc = new TipoContatoControler();
 
@@ -30,13 +28,13 @@ public class TipoContatoVisao extends FormPadrao {
     @Override
     public void criarTabela() {
         tabela = utilTabela.criarTabela(
-                jpnConsulta, 
+                jpnConsulta,
                 //id e descrição
-                new Object[] {60, 400}, 
+                new Object[]{60, 400},
                 //alinhar dados
-                new Object[] {"centro","esquerda"}, 
+                new Object[]{"centro", "esquerda"},
                 //titulo da tabela
-                new Object[] {"ID", "DESCRIÇÃO"});
+                new Object[]{"ID", "DESCRIÇÃO"});
         modelo = (DefaultTableModel) tabela.getModel();
     }
 
@@ -45,5 +43,5 @@ public class TipoContatoVisao extends FormPadrao {
         modelo.setNumRows(0);
         tcc.consultarControle(jtfConsulta.getText(), modelo);
     }
-    
+
 }

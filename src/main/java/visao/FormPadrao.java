@@ -31,25 +31,10 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
     //CONSTRUTOR
     public FormPadrao() {
         initComponents();
+        chamaComponentesPrincipal();
         setarIcone();
         criarTabela();
-        //chamaComponentesPrincipal();
         
-        jtfId.setEnabled(false);
-        jtfDescricao.setEnabled(false);
-        habilitaCampos(false);
-        inicializarComponentes();
-
-        //JLABEL PARA CONSULTA
-        jlConsulta = new JLabel("Consulta");
-        jlConsulta.setBounds(9, 5, 60, 25);
-        jpnConsulta.add(jlConsulta);
-
-        //JTEXTFIELD PARA CONSULTA
-        jtfConsulta = new JTextField();
-        jtfConsulta.setBounds(70, 5, 490, 25);
-
-        jpnConsulta.add(jtfConsulta);
 
     }
     
@@ -79,11 +64,11 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
         jbFechar.setIcon(iconeFechar);
     }
 
-    /*private void chamaComponentesPrincipal(){
+    private void chamaComponentesPrincipal(){
         jtfId.setEnabled(false);
         jtfDescricao.setEnabled(false);
         habilitaCampos(false);
-        inicializarComponentes();
+        
 
         //JLABEL PARA CONSULTA
         jlConsulta = new JLabel("Consulta");
@@ -95,7 +80,8 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
         jtfConsulta.setBounds(70, 5, 490, 25);
 
         jpnConsulta.add(jtfConsulta);
-    }*/
+        inicializarComponentes();
+    }
     
     
     /**
