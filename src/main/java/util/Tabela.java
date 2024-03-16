@@ -11,7 +11,16 @@ import javax.swing.table.TableCellRenderer;
 public class Tabela {
 
     public JTable criarTabela(JPanel jpn, Object[] largura, Object[] pos, Object[] col) throws NullPointerException {
-        JTable tabela = new JTable(new DefaultTableModel());
+        
+        
+        //método para impedir edição de células na tabela
+        JTable tabela = new JTable(new DefaultTableModel()) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                // Impedir a edição de todas as células
+                return false;
+            }
+        };
         tabela.setVisible(true);
         JScrollPane jsp = new JScrollPane(tabela);
         jsp.setBounds(2, 30, 675, 166);

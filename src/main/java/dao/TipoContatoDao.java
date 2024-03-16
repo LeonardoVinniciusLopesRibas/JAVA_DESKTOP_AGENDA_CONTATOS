@@ -53,22 +53,47 @@ public class TipoContatoDao implements InterfaceDao {
 
     @Override
     public void excluirDao(int id) {
+        
+        sql = "DELETE FROM tipocontato WHERE id = ?";
+           
+        try{
+             pstmt = ConexaoBanco.abreConnection().prepareStatement(sql);
+            pstmt.setInt(1, id);
+            pstmt.execute();
+            pstmt.close();
+            JOptionPane.showMessageDialog(null, "ITEM EXCLUÍDO COM SUCESSO");
+            
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex);
+        }
     }
 
     @Override
     public void consultaDao(Object... valor) throws SQLException {
         DefaultTableModel tabela = (DefaultTableModel) valor[1];
-        sql = "SELECT * FROM tipocontato";
-        System.out.println("Executando consulta: " + sql); // Log de diagnóstico
+        if ("".equals((String) valor[0])) {
+            sql = "SELECT * FROM tipocontato";
+        } else {
+            //sql = "SELECT * FROM tipocontato WHERE descricao LIKE '%" + valor[0] + "%'";
+            sql = "SELECT * FROM tipocontato WHERE LOWER(descricao) LIKE LOWER('%" + valor[0] + "%')";
+
+        }
+
+        //System.out.println("Executando consulta: " + sql); // Log de diagnóstico
         pstmt = ConexaoBanco.abreConnection().prepareStatement(sql);
         rs = pstmt.executeQuery();
-        int count = 0; // Contador para verificar a quantidade de registros
+        //int count = 0; // Contador para verificar a quantidade de registros
 
         while (rs.next()) {
-            count++;
-            tabela.addRow(new Object[]{rs.getInt("id"), rs.getString("descricao")});
+            //count++;    
+            tabela.addRow(
+                    new Object[]{
+                        rs.getInt("id"),
+                        rs.getString("descricao")
+                    }
+            );
         }
-        System.out.println("Registros encontrados: " + count); // Log de diagnóstico
+        //System.out.println("Registros encontrados: " + count); // Log de diagnóstico
         pstmt.close();
     }
 

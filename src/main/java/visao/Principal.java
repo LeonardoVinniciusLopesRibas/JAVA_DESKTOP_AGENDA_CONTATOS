@@ -186,6 +186,7 @@ public class Principal extends javax.swing.JFrame {
         //contatoVisaoTela.setVisible(true);
         TipoContatoVisao tela;
         form.abrirFormulario(tela = new TipoContatoVisao(), jDesktop);
+        tela.consultaVisao();
 
     }//GEN-LAST:event_jmiTipoContatoActionPerformed
 

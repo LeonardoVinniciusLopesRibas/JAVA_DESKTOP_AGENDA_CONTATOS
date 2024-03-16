@@ -44,4 +44,19 @@ public class TipoContatoVisao extends FormPadrao {
         tcc.consultarControle(jtfConsulta.getText(), modelo);
     }
 
+    @Override
+    public void atualizarFormulario() {
+
+        jtfId.setText((String) tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
+        jtfDescricao.setText((String) tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
+
+    }
+
+    @Override
+    public void excluirVisao() {
+
+        tcc.excluirControle(Integer.parseInt(jtfId.getText()));
+
+    }
+
 }

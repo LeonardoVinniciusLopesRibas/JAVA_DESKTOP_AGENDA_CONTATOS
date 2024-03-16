@@ -2,8 +2,13 @@ package visao;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -13,15 +18,21 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
 
     //MÉTODOS ABSTRATOS SERÃO IMPLEMENTADOS PELA CLASSE FILHA
     abstract public void inicializarComponentes();
+
     abstract public void salvarVisao();
+
     abstract public void criarTabela();
+
     abstract public void consultaVisao();
-    
-    
+
+    abstract public void atualizarFormulario();
+
+    abstract public void excluirVisao();
+
     //Atributos para criar tabela
     JTable tabela;
     DefaultTableModel modelo = new DefaultTableModel();
-    
+
     //instanciando objeto para manipular a classe tabela
     Tabela utilTabela = new Tabela();
 
@@ -34,41 +45,85 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
         chamaComponentesPrincipal();
         setarIcone();
         criarTabela();
-        
+        verificarJtfConsulta();
+        atualizaForm();
+        escutaSetasAtualizaForm();
 
     }
-    
-    private void setarIcone(){
+
+    private void setarIcone() {
         Image iconNovo = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\novo.png");
         ImageIcon iconeNovo = new ImageIcon(iconNovo);
         jbNovo.setIcon(iconeNovo);
-        
+
         Image iconEditar = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\edit.png");
         ImageIcon iconeEditar = new ImageIcon(iconEditar);
         jbAlterar.setIcon(iconeEditar);
-        
+
         Image iconRemover = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\remove.png");
         ImageIcon iconeRemover = new ImageIcon(iconRemover);
         jbExcluir.setIcon(iconeRemover);
-        
+
         Image iconSalvar = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\salvar.png");
         ImageIcon iconeSalvar = new ImageIcon(iconSalvar);
         jbSalvar.setIcon(iconeSalvar);
-        
+
         Image iconCancelar = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\cancel.png");
         ImageIcon iconeCancelar = new ImageIcon(iconCancelar);
         jbCancelar.setIcon(iconeCancelar);
-        
+
         Image iconFechar = Toolkit.getDefaultToolkit().getImage("C:\\Users\\leona\\OneDrive\\Documentos\\NetBeansProjects\\AgendaContatos\\src\\main\\java\\img\\Fechar.png");
         ImageIcon iconeFechar = new ImageIcon(iconFechar);
         jbFechar.setIcon(iconeFechar);
     }
 
-    private void chamaComponentesPrincipal(){
+    private void verificarJtfConsulta() {
+        jtfConsulta.addKeyListener(
+                new KeyAdapter() {
+
+            public void keyReleased(KeyEvent e) {
+
+                consultaVisao();
+
+            }
+
+        }
+        );
+    }
+
+    private void atualizaForm() {
+        tabela.addMouseListener(
+                new MouseAdapter() {
+
+            public void mouseClicked(MouseEvent e) {
+
+                atualizarFormulario();
+
+            }
+
+        }
+        );
+
+    }
+
+    private void escutaSetasAtualizaForm() {
+        tabela.addKeyListener(
+                new KeyAdapter() {
+
+            public void keyReleased(KeyEvent e) {
+
+                atualizarFormulario();
+
+            }
+
+        }
+        );
+    }
+
+    private void chamaComponentesPrincipal() {
         jtfId.setEnabled(false);
         jtfDescricao.setEnabled(false);
         habilitaCampos(false);
-        
 
         //JLABEL PARA CONSULTA
         jlConsulta = new JLabel("Consulta");
@@ -82,8 +137,7 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
         jpnConsulta.add(jtfConsulta);
         inicializarComponentes();
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -290,6 +344,7 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
         salvarVisao();
         habilitaBotoes(true);
         habilitaCampos(false);
+        consultaVisao();
 
     }//GEN-LAST:event_jbSalvarActionPerformed
 
@@ -297,14 +352,20 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         habilitaBotoes(false);
         habilitaCampos(true);
-        limpaCampo();
         jtfDescricao.requestFocus();
 
     }//GEN-LAST:event_jbAlterarActionPerformed
 
     private void jbExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirActionPerformed
         // TODO add your handling code here:
-        habilitaBotoes(false);
+        if (JOptionPane.showConfirmDialog(null, "Deseja realmente excluir o registro?", "EXCLUIR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+            excluirVisao();
+            consultaVisao();
+            limpaCampo();
+        } else {
+            JOptionPane.showMessageDialog(null, "Exclusão Cancelada");
+        }
+        jtfId.setText("");
     }//GEN-LAST:event_jbExcluirActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
@@ -339,6 +400,7 @@ abstract public class FormPadrao extends javax.swing.JInternalFrame {
 
     //MÉTODO PARA LIMPAR OS CAMPOS DO FORMULÁRIOS
     public void limpaCampo() {
+        jtfId.setText("");
         jtfDescricao.setText("");
     }
 

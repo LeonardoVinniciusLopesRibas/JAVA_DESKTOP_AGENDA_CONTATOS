@@ -17,7 +17,7 @@ public class TipoContatoControler implements InterfaceController {
         if ("".equals(valor[0])) {
             tcm.setId(0);
         } else {
-            tcm.setId((int) valor[0]);
+            tcm.setId(Integer.parseInt(valor[0].toString()));
         }
         tcm.setDescricao((String) valor[1]);
 
@@ -28,7 +28,11 @@ public class TipoContatoControler implements InterfaceController {
 
     @Override
     public void excluirControle(int id) {
-
+        try{
+            tcd.excluirDao(id);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     @Override
