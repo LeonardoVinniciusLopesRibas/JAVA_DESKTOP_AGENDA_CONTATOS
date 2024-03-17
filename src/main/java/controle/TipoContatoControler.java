@@ -9,6 +9,9 @@ import modelo.TipoContatoModelo;
 
 public class TipoContatoControler implements InterfaceController {
 
+    
+    
+    
     TipoContatoModelo tcm = new TipoContatoModelo();
     TipoContatoDao tcd = new TipoContatoDao();
 
